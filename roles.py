@@ -24,7 +24,7 @@ role_list: list = [
 
 def return_friendly_name(role: list) -> list:
 
-    return_roles = []
+    return_roles: list = []
 
     for iterable in role_list:
 
@@ -37,7 +37,7 @@ def return_friendly_name(role: list) -> list:
 
 def write_json(write: dict) -> None:
 
-    file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'users.json')
+    file_path: str = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'users.json')
 
     with open(file_path, 'w', encoding='utf8') as file:
 
@@ -46,10 +46,10 @@ def write_json(write: dict) -> None:
 
 def read_json() -> dict:
 
-    file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'users.json')
+    file_path: str = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'users.json')
 
     with open(file_path, 'r', encoding='utf8') as read:
 
-        data = json.load(read)
+        data: dict = json.load(read)
 
     return data
