@@ -6,17 +6,17 @@ class User:
 
     """
 
-    identifier_seed = int(1)
+    identifier_seed: int = 1
 
     def __init__(self, name: str, email: str, password: str, roles: list) -> None:
 
-        self.name = name
+        self.name: str = name
 
-        self.email = email
+        self.email: str = email
 
-        self.password = password
+        self.password: str = password
 
-        self.roles = roles
+        self.roles: list = roles
 
         self.identifier = self.identifier_seed
 
@@ -24,7 +24,7 @@ class User:
 
     def show(self) -> dict:
 
-        show_dict = {
+        show_dict: dict = {
             "id": self.identifier,
             "name": self.name,
             "email": self.email,
