@@ -1,10 +1,4 @@
-from roles import return_friendly_name
-
-from roles import write_json
-
-from roles import read_json
-
-from roles import role_list
+from roles import return_friendly_name, write_json, read_json, role_list
 
 from user import User
 
@@ -19,7 +13,7 @@ class UsersRegistry:
 
     def __init__(self) -> None:
 
-        self.list_of_users = []
+        self.list_of_users: list = []
 
         self.import_json_file()
 
@@ -31,7 +25,7 @@ class UsersRegistry:
 
         print('Cadastrar um novo usuário')
 
-        new_user = User(name, email, password, roles)
+        new_user: User = User(name, email, password, roles)
 
         self.list_of_users.append(new_user)
 
@@ -55,7 +49,7 @@ class UsersRegistry:
 
         print('Visualizar todos os usuários cadastrados')
 
-        result = []
+        result: list = []
 
         for item in self.list_of_users:
 
@@ -107,7 +101,7 @@ class UsersRegistry:
 
     def export_json_file(self) -> None:
 
-        write_dictionary = {
+        write_dictionary: dict = {
 
             "users": self.show_all_users(),
 
@@ -121,7 +115,7 @@ class UsersRegistry:
 
     def import_json_file(self) -> None:
 
-        read_dictionary = read_json()
+        read_dictionary: dict = read_json()
 
         for item in read_dictionary['users']:
 
