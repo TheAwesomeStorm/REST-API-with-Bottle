@@ -5,7 +5,7 @@ from users_registry import UsersRegistry
 from bottle import get, post, put, delete, request, response, run
 
 
-users = UsersRegistry()
+users: UsersRegistry = UsersRegistry()
 
 
 @get('/api/user')
