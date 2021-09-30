@@ -8,7 +8,7 @@ class User:
 
     identifier_seed: int = 1
 
-    def __init__(self, name: str, email: str, password: str, roles: list) -> None:
+    def __init__(self, name: str, email: str, password: str, roles: list[int]) -> None:
 
         self.name: str = name
 
@@ -16,9 +16,9 @@ class User:
 
         self.password: str = password
 
-        self.roles: list = roles
+        self.roles: list[int] = roles
 
-        self.identifier = self.identifier_seed
+        self.identifier: int = self.identifier_seed
 
         self.__class__.identifier_seed += 1
 
@@ -34,7 +34,7 @@ class User:
 
         return show_dict
 
-    def grant_role(self, role_identifier: int) -> None:  # setter?
+    def grant_role(self, role_identifier: int) -> None:  # kind of set roles
 
         if role_identifier not in self.roles:
 
@@ -44,6 +44,6 @@ class User:
 
         self.roles.remove(role_identifier)
 
-    def show_all_roles(self) -> list:  # get roles
+    def show_all_roles(self) -> list[int]:  # get roles
 
         return self.roles
