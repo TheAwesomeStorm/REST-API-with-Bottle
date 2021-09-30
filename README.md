@@ -8,6 +8,7 @@ This project is part of a training to new Developers at GuiaInvest
 
 ## Project Structure
 
+../README.md  
 ../src/main.py  
 ../src/environment.py  
 ../src/data/users.json  
