@@ -27,12 +27,3 @@ class Configurations(metaclass=Singleton):
             self.bottle_port = environment.OPERATION_PORT
 
             self.json_indent = None
-
-    @classmethod
-    def singleton(cls):
-
-        if cls.__instance is None:
-
-            cls.__instance = cls()
-
-        return cls.__instance
