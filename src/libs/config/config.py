@@ -1,5 +1,4 @@
 from src import environment
-
 from src.libs.singleton import Singleton
 
 
