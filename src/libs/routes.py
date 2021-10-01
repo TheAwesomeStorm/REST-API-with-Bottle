@@ -10,7 +10,7 @@ from src.utils.JSON_utils import import_json, export_json
 
 authorization: Authorization = Authorization()
 
-configurations: Configurations = Configurations.singleton()
+configurations: Configurations = Configurations()
 
 users: UsersRegistry = UsersRegistry()
 
