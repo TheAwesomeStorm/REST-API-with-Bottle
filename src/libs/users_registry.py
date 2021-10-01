@@ -1,8 +1,9 @@
 from src.libs.user import User
 from src.libs.roles import return_friendly_name
+from src.libs.singleton import Singleton
 
 
-class UsersRegistry:
+class UsersRegistry(metaclass=Singleton):
 
     """
 
