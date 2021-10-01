@@ -10,8 +10,6 @@ class Configurations(metaclass=Singleton):
 
     """
 
-    __instance = None
-
     def __init__(self, debug: bool = environment.IS_DEBUG):
 
         self.bottle_host = environment.HOST
