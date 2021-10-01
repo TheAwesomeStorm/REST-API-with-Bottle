@@ -1,7 +1,9 @@
+from src.libs.singleton import Singleton
+
 from src.libs.users_registry import UsersRegistry
 
 
-class Authorization:
+class Authorization(metaclass=Singleton):
 
     """
 
