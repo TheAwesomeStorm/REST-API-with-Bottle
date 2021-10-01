@@ -4,7 +4,7 @@ from src import environment
 from src.libs.config.config import Configurations
 
 
-configurations: Configurations = Configurations.singleton()
+configurations: Configurations = Configurations()
 
 
 def write_json(write: dict) -> None:
