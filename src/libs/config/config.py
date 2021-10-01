@@ -1,7 +1,9 @@
 from src import environment
 
+from src.libs.singleton import Singleton
 
-class Configurations:
+
+class Configurations(metaclass=Singleton):
 
     """
 
