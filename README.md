@@ -17,6 +17,7 @@ This project is part of a training to new Developers at GuiaInvest
 ../src/libs/JSON.py  
 ../src/libs/roles.py  
 ../src/libs/routes.py  
+../src/libs/singleton.py  
 ../src/libs/user.py  
 ../src/libs/users_registry.py  
 ../src/libs/config/config.py  
