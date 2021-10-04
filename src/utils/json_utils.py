@@ -1,4 +1,4 @@
-from src.libs.JSON import read_json, write_json
+from src.libs.json_loader import read_json, write_json
 from src.libs.users_registry import UsersRegistry
 
 

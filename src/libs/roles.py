@@ -1,4 +1,4 @@
-from src.libs.JSON import read_json
+from src.libs.json_loader import read_json
 
 
 role_list: list = read_json()['roles']

@@ -1,11 +1,11 @@
 from bottle import get, post, put, delete, request, response, run
 import json
 
-from src import environment
-from src.libs.config.config import Configurations
+from src import env
+from src.libs.config.conf import Configurations
 from src.libs.users_registry import UsersRegistry
 from src.utils.authorization import Authorization
-from src.utils.JSON_utils import import_json, export_json
+from src.utils.json_utils import import_json, export_json
 
 
 authorization: Authorization = Authorization()
@@ -62,7 +62,7 @@ def login() -> str:
 
     user_identifier = authorization.request_login(user_email, user_password, users)
 
-    if authorization.login:
+    if user_identifier:
 
         response.set_cookie("id", str(user_identifier))
 
@@ -86,7 +86,7 @@ def create_user() -> str:
 
         users.create_user(name, email, password)
 
-        return show_process_result()
+        return 'Usuário criado com sucesso'
 
     else:
 
@@ -96,13 +96,13 @@ def create_user() -> str:
 @post('/api/user/<identifier:int>/role')
 def grant_user_role(identifier: int) -> str:
 
-    if authorization.update_user_access:
+    if authorization.create_user_access:
 
         role_number: int = request.json.get('role_number')
 
         users.grant_access(identifier, role_number)
 
-        return show_process_result()
+        return 'Permissão adicionada com sucesso'
 
     else:
 
@@ -118,9 +118,9 @@ def update_user(identifier: int) -> str:
 
         value: str = request.json.get('value')
 
-        users.update_user(identifier, attribute, value)
+        users.set_attribute(identifier, attribute, value)
 
-        return show_process_result()
+        return 'Usuário atualizado com sucesso'
 
     else:
 
@@ -140,7 +140,11 @@ def delete_user(identifier: int) -> str:
 
         users.delete_user(identifier)
 
-        return show_process_result()
+        user_identifier: int = int(request.get_cookie('id'))
+
+        authorization.inspect_user_roles(user_identifier, users)
+
+        return 'Usuário removido com sucesso'
 
     else:
 
@@ -154,26 +158,19 @@ def revoke_user_role(identifier: int, role_num: int) -> str:
 
         users.revoke_access(identifier, role_num)
 
-        return show_process_result()
+        user_identifier: int = int(request.get_cookie('id'))
+
+        authorization.inspect_user_roles(user_identifier, users)
+
+        return 'Permissão removida com sucesso'
 
     else:
 
         return 'Acesso inválido'
 
 
-def show_process_result() -> str:
-
-    if environment.IS_DEBUG:
-
-        return show_all_users()
-
-    else:
-
-        return 'Processo concluído'
-
-
 def run_web_api(host: str = configurations.bottle_host,
                 port: str = configurations.bottle_port,
-                debug: bool = environment.IS_DEBUG):
+                debug: bool = env.IS_DEBUG):
 
     run(host=host, port=port, debug=debug)

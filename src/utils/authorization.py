@@ -1,18 +1,12 @@
-from src.libs.singleton import Singleton
+from src.libs.singleton_metaclass import SingletonMetaclass
 from src.libs.users_registry import UsersRegistry
 
 
-class Authorization(metaclass=Singleton):
-
-    """
-
-    Utility class to handle the authentications and access for this Web APÌ
-
-    """
+class Authorization(metaclass=SingletonMetaclass):
 
     def __init__(self):
 
-        self.login: bool = False
+        self.user_roles = []
 
         self.create_user_access: bool = False
 
@@ -20,32 +14,50 @@ class Authorization(metaclass=Singleton):
 
         self.view_user_access: bool = False
 
-    def __request_access(self, user_access: list[int]):
-
-        if 1 in user_access:
-
-            self.create_user_access = True
-
-        if 2 in user_access:
-
-            self. update_user_access = True
-
-        if 3 in user_access:
-
-            self.view_user_access = True
-
     def request_login(self, user_email: str, user_password: str, users: UsersRegistry) -> int:
 
         for user in users.all_users.values():
 
             if user.email == user_email and user.password == user_password:
 
-                self.login = True
-
-                self.__request_access(user.show_all_roles())
+                self.inspect_user_roles(user.identifier, users)
 
                 return user.identifier
 
-            else:
+        else:
 
-                return 0
+            self.user_roles = []
+
+            return 0
+
+    def inspect_user_roles(self, identifier: int, users: UsersRegistry) -> None:
+
+        try:
+
+            self.user_roles = users.get_user(identifier).roles
+
+        except KeyError:
+
+            self.user_roles = []
+
+            self.__request_acess()
+
+        self.__request_acess()
+
+    def __inspect_acess(self, acess_number: int) -> bool:
+
+        if acess_number in self.user_roles:
+
+            return True
+
+        else:
+
+            return False
+
+    def __request_acess(self) -> None:
+
+        self.create_user_access = self.__inspect_acess(1)
+
+        self.update_user_access = self.__inspect_acess(2)
+
+        self.view_user_access = self.__inspect_acess(3)

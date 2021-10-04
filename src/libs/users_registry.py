@@ -1,9 +1,9 @@
 from src.libs.user import User
 from src.libs.roles import return_friendly_name
-from src.libs.singleton import Singleton
+from src.libs.singleton_metaclass import SingletonMetaclass
 
 
-class UsersRegistry(metaclass=Singleton):
+class UsersRegistry(metaclass=SingletonMetaclass):
 
     """
 
@@ -43,11 +43,15 @@ class UsersRegistry(metaclass=Singleton):
 
         return self.all_users[identifier].show()
 
-    def update_user(self, identifier: int, attribute: str, value: str) -> None:  # set_attributes
+    def get_user(self, identifier: int) -> User:
+
+        return self.all_users[identifier]
+
+    def set_attribute(self, identifier: int, attribute: str, value: str) -> None:
 
         setattr(self.all_users[identifier], attribute, value)
 
-    def show_attribute(self, identifier: int, attribute: str) -> str:  # get_attributes
+    def get_attribute(self, identifier: int, attribute: str) -> str:
 
         return getattr(self.all_users[identifier], attribute)
 
@@ -59,10 +63,10 @@ class UsersRegistry(metaclass=Singleton):
 
         self.all_users[identifier].revoke_role(role_number)
 
-    def show_access(self, identifier: int) -> list[int]:
+    def get_roles(self, identifier: int) -> list[int]:
 
-        return self.all_users[identifier].show_all_roles()
+        return self.all_users[identifier].roles
 
     def show_friendly_access(self, identifier: int) -> list:
 
-        return return_friendly_name(self.all_users[identifier].show_all_roles())
+        return return_friendly_name(self.all_users[identifier].roles)

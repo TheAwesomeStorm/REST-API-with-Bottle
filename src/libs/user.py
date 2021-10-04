@@ -34,7 +34,7 @@ class User:
 
         return show_dict
 
-    def grant_role(self, role_identifier: int) -> None:  # kind of set roles
+    def grant_role(self, role_identifier: int) -> None:
 
         if role_identifier not in self.roles:
 
@@ -43,7 +43,3 @@ class User:
     def revoke_role(self, role_identifier: int) -> None:
 
         self.roles.remove(role_identifier)
-
-    def show_all_roles(self) -> list[int]:  # get roles
-
-        return self.roles

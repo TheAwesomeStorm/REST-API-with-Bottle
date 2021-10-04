@@ -1,7 +1,7 @@
 import json
 
-from src import environment
-from src.libs.config.config import Configurations
+from src import env
+from src.libs.config.conf import Configurations
 
 
 configurations: Configurations = Configurations()
@@ -9,7 +9,7 @@ configurations: Configurations = Configurations()
 
 def write_json(write: dict) -> None:
 
-    file_path: str = environment.JSON_FILE_PATH
+    file_path: str = env.JSON_FILE_PATH
 
     with open(file_path, 'w', encoding='utf8') as file:
 
@@ -18,7 +18,7 @@ def write_json(write: dict) -> None:
 
 def read_json() -> dict:
 
-    file_path: str = environment.JSON_FILE_PATH
+    file_path: str = env.JSON_FILE_PATH
 
     with open(file_path, 'r', encoding='utf8') as read:
 

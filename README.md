@@ -10,14 +10,14 @@ This project is part of a training to new Developers at GuiaInvest
 
 ../README.md  
 ../src/main.py  
-../src/environment.py  
+../src/env.py  
 ../src/data/users.json  
 ../src/utils/authorization.py  
-../src/utils/JSON_utils.py  
-../src/libs/JSON.py  
+../src/utils/json_utils.py  
+../src/libs/json_loader.py  
 ../src/libs/roles.py  
 ../src/libs/routes.py  
-../src/libs/singleton.py  
+../src/libs/singleton_metaclass.py  
 ../src/libs/user.py  
 ../src/libs/users_registry.py  
-../src/libs/config/config.py  
+../src/libs/config/conf.py  
