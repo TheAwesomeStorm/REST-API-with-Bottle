@@ -40,8 +40,6 @@ class Authorization(metaclass=SingletonMetaclass):
 
             self.user_roles = []
 
-            self.__request_acess()
-
         self.__request_acess()
 
     def __inspect_acess(self, acess_number: int) -> bool:
