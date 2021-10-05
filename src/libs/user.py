@@ -1,9 +1,24 @@
+"""
+
+Define a classe referente aos usuários da API
+
+"""
+
+
 class User:
 
     """
 
-    Objeto contendo uma lista com os dados de todos usuários
+    Contém as informações de um usuário
 
+    :param name: Nome do usuário
+    :type name: str
+    :param email: E-mail do usuário
+    :type email: str
+    :param password: Senha de acesso do usuário na API
+    :type password: str
+    :param roles: Lista de identificadores das permissões do usuário na API
+    :type roles: list[int]
     """
 
     identifier_seed: int = 1
@@ -24,6 +39,14 @@ class User:
 
     def show(self) -> dict:
 
+        """
+
+        Reúne e informa os atributos de uma instância de :class:`User`
+
+        :return: Todos atributos deste objeto
+        :rtype: dict
+        """
+
         show_dict: dict = {
             "id": self.identifier,
             "name": self.name,
@@ -36,10 +59,26 @@ class User:
 
     def grant_role(self, role_identifier: int) -> None:
 
+        """
+
+        Adiciona uma permissão específica, se esta já não existe na instância
+
+        :param role_identifier: Identificador da permissão
+        :type role_identifier: int
+        """
+
         if role_identifier not in self.roles:
 
             self.roles.append(role_identifier)
 
     def revoke_role(self, role_identifier: int) -> None:
+
+        """
+
+        Remove uma permissão específica
+
+        :param role_identifier: Identificador da permissão
+        :type role_identifier: int
+        """
 
         self.roles.remove(role_identifier)

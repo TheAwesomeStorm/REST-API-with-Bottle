@@ -2,15 +2,15 @@ from src import env
 from src.libs.singleton_metaclass import SingletonMetaclass
 
 
-class Configurations(metaclass=SingletonMetaclass):  # class Configurations:
+class Configurations(metaclass=SingletonMetaclass):
 
     """
 
-    Class that defines the configuration for the program
+   Classe que define as configurações para a API
 
+   :param debug: Define o ambiente da API, debug, i.e., desenvolvimento, ou produção
+   :type debug: bool
     """
-
-    # __instance = None
 
     def __init__(self, debug: bool = env.IS_DEBUG):
 
@@ -27,12 +27,3 @@ class Configurations(metaclass=SingletonMetaclass):  # class Configurations:
             self.bottle_port = env.OPERATION_PORT
 
             self.json_indent = None
-
-    # @classmethod
-    # def singleton(cls):
-    #
-    #     if cls.__instance is None:
-    #
-    #         cls.__instance = cls()
-    #
-    #     return cls.__instance

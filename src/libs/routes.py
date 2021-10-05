@@ -12,13 +12,19 @@ authorization: Authorization = Authorization()
 
 configurations: Configurations = Configurations()
 
-users: UsersRegistry = UsersRegistry()
-
-import_json(users)
+users: UsersRegistry = import_json()
 
 
 @get('/api/user')
 def show_all_users() -> str:
+
+    """
+
+    Visualizar todos os usuários cadastrados
+
+    :return: Todos os usuários e seus atributos
+    :rtype: str
+    """
 
     if authorization.view_user_access:
 
@@ -32,6 +38,17 @@ def show_all_users() -> str:
 @get('/api/user/<identifier:int>')
 def show_user(identifier: int) -> str:
 
+    """
+
+    Visualizar um usuário específico
+
+    :param identifier: Identificador do usuário na base de dados
+    :type identifier: int
+
+    :return: Um usuário e seus atributos
+    :rtype: str
+    """
+
     if authorization.view_user_access:
 
         return json.dumps(users.show_user(identifier), ensure_ascii=False, indent=configurations.json_indent)
@@ -44,6 +61,17 @@ def show_user(identifier: int) -> str:
 @get('/api/user/<identifier:int>/role')
 def show_user_role(identifier: int) -> str:
 
+    """
+
+    Visualizar todas as permissões de um usuário específico
+
+    :param identifier: Identificador do usuário na base de dados
+    :type identifier: int
+
+    :return: Descrição de todas as permissões do usuário
+    :rtype: str
+    """
+
     if authorization.view_user_access:
 
         return json.dumps(users.show_friendly_access(identifier), ensure_ascii=False, indent=configurations.json_indent)
@@ -55,6 +83,14 @@ def show_user_role(identifier: int) -> str:
 
 @post('/api/login')
 def login() -> str:
+
+    """
+
+    Autenticação para utilização da API
+
+    :return: Um texto informando se a ação foi bem sucedida
+    :rtype: str
+    """
 
     user_email: str = request.json.get('user_email')
 
@@ -76,6 +112,14 @@ def login() -> str:
 @post('/api/user')
 def create_user() -> str:
 
+    """
+
+    Cadastrar um novo usuário
+
+    :return: Um texto informando se a ação foi bem sucedida
+    :rtype: str
+    """
+
     if authorization.create_user_access:
 
         name: str = request.json.get('name')
@@ -96,6 +140,17 @@ def create_user() -> str:
 @post('/api/user/<identifier:int>/role')
 def grant_user_role(identifier: int) -> str:
 
+    """
+
+    Adicionar uma permissão a um usuário específico
+
+    :param identifier: Identificador do usuário na base de dados
+    :type identifier: int
+
+    :return: Um texto informando se a ação foi bem sucedida
+    :rtype: str
+    """
+
     if authorization.create_user_access:
 
         role_number: int = request.json.get('role_number')
@@ -111,6 +166,17 @@ def grant_user_role(identifier: int) -> str:
 
 @put('/api/user/<identifier:int>')
 def update_user(identifier: int) -> str:
+
+    """
+
+    Atualizar as informações de um usuário específico
+
+    :param identifier: Identificador do usuário na base de dados
+    :type identifier: int
+
+    :return: Um texto informando se a ação foi bem sucedida
+    :rtype: str
+    """
 
     if authorization.update_user_access:
 
@@ -130,11 +196,28 @@ def update_user(identifier: int) -> str:
 @put('/api/save')
 def save_changes() -> None:
 
+    """
+
+    Salva as alterações do cache em um arquivo JSON
+
+    """
+
     export_json(users)
 
 
 @delete('/api/user/<identifier:int>')
 def delete_user(identifier: int) -> str:
+
+    """
+
+    Excluir um usuário específico
+
+    :param identifier: Identificador do usuário na base de dados
+    :type identifier: int
+
+    :return: Um texto informando se a ação foi bem sucedida
+    :rtype: str
+    """
 
     if authorization.create_user_access:
 
@@ -153,6 +236,19 @@ def delete_user(identifier: int) -> str:
 
 @delete('/api/user/<identifier:int>/role/<role_num:int>')
 def revoke_user_role(identifier: int, role_num: int) -> str:
+
+    """
+
+    Excluir uma permissão de um usuário específico
+
+    :param identifier: Identificador do usuário na base de dados
+    :type identifier: int
+    :param role_num: Identificador da permissão a ser excluída
+    :type role_num: int
+
+    :return: Um texto informando se a ação foi bem sucedida
+    :rtype: str
+    """
 
     if authorization.update_user_access:
 
