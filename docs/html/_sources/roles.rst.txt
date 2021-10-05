@@ -1,0 +1,5 @@
+Roles
+===========
+
+.. automodule:: src.libs.roles
+    :members:

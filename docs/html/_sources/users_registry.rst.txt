@@ -1,0 +1,7 @@
+Users Registry
+====================
+
+.. automodule:: src.libs.users_registry
+
+.. autoclass:: UsersRegistry
+    :members:

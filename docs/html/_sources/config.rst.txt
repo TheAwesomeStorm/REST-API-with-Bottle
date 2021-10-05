@@ -1,0 +1,6 @@
+Configurações
+=============
+
+.. toctree::
+
+   conf.rst

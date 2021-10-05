@@ -1,0 +1,7 @@
+Configurations
+====================
+
+.. automodule:: src.libs.config.conf
+
+.. autoclass:: Configurations
+    :members:
