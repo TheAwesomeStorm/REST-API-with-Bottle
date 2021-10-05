@@ -1,3 +1,35 @@
+"""
+
+GET
+
+/api/user - :class:`show_all_users`
+
+/api/user/<id:int> - :class:`show_user`
+
+/api/user/<id:int>/role - :class:`show_user_role`
+
+POST
+
+/api/login - :class:`login`
+
+/api/user - :class:`create_user`
+
+/api/user/<id:int>/role - :class:`grant_user_role`
+
+PUT
+
+/api/user/<id:int> - :class:`update_user`
+
+/api/save - :class:`save_changes`
+
+DELETE
+
+/api/user/<id:int> - :class:`delete_user`
+
+/api/user/<id:int>/role/<role_num:int> - :class:`revoke_user_role`
+
+"""
+
 from bottle import get, post, put, delete, request, response, run
 import json
 
