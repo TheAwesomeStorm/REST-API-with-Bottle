@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSON Utils &mdash; documentação REST API com Bottle 1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="prev" title="Authorization" href="authorization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> REST API com Bottle
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libs.html">Bibliotecas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="utils.html">Utilidades</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authorization.html">Authorization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JSON Utils</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">REST API com Bottle</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="utils.html">Utilidades</a> &raquo;</li>
+      <li>JSON Utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/json_utils.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-src.utils.json_utils">
+<span id="json-utils"></span><h1>JSON Utils<a class="headerlink" href="#module-src.utils.json_utils" title="Link permanente para este título"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.json_utils.export_json">
+<span class="sig-prename descclassname"><span class="pre">src.utils.json_utils.</span></span><span class="sig-name descname"><span class="pre">export_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">users</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="users_registry.html#src.libs.users_registry.UsersRegistry" title="src.libs.users_registry.UsersRegistry"><span class="pre">src.libs.users_registry.UsersRegistry</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.utils.json_utils.export_json" title="Link permanente para esta definição"></a></dt>
+<dd><p>Converte todos as informações em uma instância de <code class="xref py py-class docutils literal notranslate"><span class="pre">UsersRegistry</span></code> para um arquivo JSON</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><p><strong>users</strong> (<a class="reference internal" href="users_registry.html#src.libs.users_registry.UsersRegistry" title="src.libs.users_registry.UsersRegistry"><em>UsersRegistry</em></a>) – Objeto contendo as informações de todos os usuários</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.json_utils.import_json">
+<span class="sig-prename descclassname"><span class="pre">src.utils.json_utils.</span></span><span class="sig-name descname"><span class="pre">import_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="users_registry.html#src.libs.users_registry.UsersRegistry" title="src.libs.users_registry.UsersRegistry"><span class="pre">src.libs.users_registry.UsersRegistry</span></a></span></span><a class="headerlink" href="#src.utils.json_utils.import_json" title="Link permanente para esta definição"></a></dt>
+<dd><p>Transfere todas as informações de usuários em um arquivo JSON para um objeto <code class="xref py py-class docutils literal notranslate"><span class="pre">UsersRegistry</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna</dt>
+<dd class="field-odd"><p>Um objeto contendo todas as informações de usuários presentes em um arquivo JSON</p>
+</dd>
+<dt class="field-even">Tipo de retorno</dt>
+<dd class="field-even"><p><a class="reference internal" href="users_registry.html#src.libs.users_registry.UsersRegistry" title="src.libs.users_registry.UsersRegistry">UsersRegistry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="authorization.html" class="btn btn-neutral float-left" title="Authorization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Daniel Mendes Sechinske.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

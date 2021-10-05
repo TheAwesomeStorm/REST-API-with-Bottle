@@ -1,0 +1,8 @@
+Authorization
+===================
+
+.. automodule:: src.utils.authorization
+
+.. autoclass:: Authorization
+    :members:
+    :private-members:

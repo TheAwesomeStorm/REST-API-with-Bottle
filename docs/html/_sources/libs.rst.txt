@@ -1,0 +1,11 @@
+Bibliotecas
+===========
+
+.. toctree::
+
+   json_loader.rst
+   roles.rst
+   routes.rst
+   user.rst
+   users_registry.rst
+   config.rst

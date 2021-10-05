@@ -1,0 +1,23 @@
+.. REST API com Bottle documentation master file, created by
+   sphinx-quickstart on Tue Oct  5 14:08:27 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Bem vindo(a) a documentação da REST API com Bottle
+==================================================
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Conteúdos:
+
+   libs.rst
+   utils.rst
+
+
+
+Índices e Tabelas
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Routes &mdash; documentação REST API com Bottle 1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="User" href="user.html" />
+    <link rel="prev" title="Roles" href="roles.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> REST API com Bottle
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">Bibliotecas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="json_loader.html">JSON Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html">Roles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.html">User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users_registry.html">Users Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configurações</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilidades</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">REST API com Bottle</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="libs.html">Bibliotecas</a> &raquo;</li>
+      <li>Routes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/routes.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-src.libs.routes">
+<span id="routes"></span><h1>Routes<a class="headerlink" href="#module-src.libs.routes" title="Link permanente para este título"></a></h1>
+<p>GET</p>
+<p>/api/user - <a class="reference internal" href="#src.libs.routes.show_all_users" title="src.libs.routes.show_all_users"><code class="xref py py-class docutils literal notranslate"><span class="pre">show_all_users</span></code></a></p>
+<p>/api/user/&lt;id:int&gt; - <a class="reference internal" href="#src.libs.routes.show_user" title="src.libs.routes.show_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">show_user</span></code></a></p>
+<p>/api/user/&lt;id:int&gt;/role - <a class="reference internal" href="#src.libs.routes.show_user_role" title="src.libs.routes.show_user_role"><code class="xref py py-class docutils literal notranslate"><span class="pre">show_user_role</span></code></a></p>
+<p>POST</p>
+<p>/api/login - <a class="reference internal" href="#src.libs.routes.login" title="src.libs.routes.login"><code class="xref py py-class docutils literal notranslate"><span class="pre">login</span></code></a></p>
+<p>/api/user - <a class="reference internal" href="#src.libs.routes.create_user" title="src.libs.routes.create_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">create_user</span></code></a></p>
+<p>/api/user/&lt;id:int&gt;/role - <a class="reference internal" href="#src.libs.routes.grant_user_role" title="src.libs.routes.grant_user_role"><code class="xref py py-class docutils literal notranslate"><span class="pre">grant_user_role</span></code></a></p>
+<p>PUT</p>
+<p>/api/user/&lt;id:int&gt; - <a class="reference internal" href="#src.libs.routes.update_user" title="src.libs.routes.update_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">update_user</span></code></a></p>
+<p>/api/save - <a class="reference internal" href="#src.libs.routes.save_changes" title="src.libs.routes.save_changes"><code class="xref py py-class docutils literal notranslate"><span class="pre">save_changes</span></code></a></p>
+<p>DELETE</p>
+<p>/api/user/&lt;id:int&gt; - <a class="reference internal" href="#src.libs.routes.delete_user" title="src.libs.routes.delete_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">delete_user</span></code></a></p>
+<p>/api/user/&lt;id:int&gt;/role/&lt;role_num:int&gt; - <a class="reference internal" href="#src.libs.routes.revoke_user_role" title="src.libs.routes.revoke_user_role"><code class="xref py py-class docutils literal notranslate"><span class="pre">revoke_user_role</span></code></a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.create_user">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.create_user" title="Link permanente para esta definição"></a></dt>
+<dd><p>Cadastrar um novo usuário</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna</dt>
+<dd class="field-odd"><p>Um texto informando se a ação foi bem sucedida</p>
+</dd>
+<dt class="field-even">Tipo de retorno</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.delete_user">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">delete_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.delete_user" title="Link permanente para esta definição"></a></dt>
+<dd><p>Excluir um usuário específico</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>int</em>) – Identificador do usuário na base de dados</p>
+</dd>
+<dt class="field-even">Retorna</dt>
+<dd class="field-even"><p>Um texto informando se a ação foi bem sucedida</p>
+</dd>
+<dt class="field-odd">Tipo de retorno</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.grant_user_role">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">grant_user_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.grant_user_role" title="Link permanente para esta definição"></a></dt>
+<dd><p>Adicionar uma permissão a um usuário específico</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>int</em>) – Identificador do usuário na base de dados</p>
+</dd>
+<dt class="field-even">Retorna</dt>
+<dd class="field-even"><p>Um texto informando se a ação foi bem sucedida</p>
+</dd>
+<dt class="field-odd">Tipo de retorno</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.login">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.login" title="Link permanente para esta definição"></a></dt>
+<dd><p>Autenticação para utilização da API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna</dt>
+<dd class="field-odd"><p>Um texto informando se a ação foi bem sucedida</p>
+</dd>
+<dt class="field-even">Tipo de retorno</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.revoke_user_role">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">revoke_user_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.revoke_user_role" title="Link permanente para esta definição"></a></dt>
+<dd><p>Excluir uma permissão de um usuário específico</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>identifier</strong> (<em>int</em>) – Identificador do usuário na base de dados</p></li>
+<li><p><strong>role_num</strong> (<em>int</em>) – Identificador da permissão a ser excluída</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorna</dt>
+<dd class="field-even"><p>Um texto informando se a ação foi bem sucedida</p>
+</dd>
+<dt class="field-odd">Tipo de retorno</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.run_web_api">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">run_web_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'8080'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.libs.routes.run_web_api" title="Link permanente para esta definição"></a></dt>
+<dd><p>Inicia a execução da Web API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> (<em>str</em>) – Nome do host, e.g., <em>localhost</em></p></li>
+<li><p><strong>port</strong> (<em>str</em>) – Número da porta, e.g., <em>8080</em></p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Define entre ambiente de desenvolvimento e produção</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.save_changes">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">save_changes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.libs.routes.save_changes" title="Link permanente para esta definição"></a></dt>
+<dd><p>Salva as alterações do cache em um arquivo JSON</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.show_all_users">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">show_all_users</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.show_all_users" title="Link permanente para esta definição"></a></dt>
+<dd><p>Visualizar todos os usuários cadastrados</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna</dt>
+<dd class="field-odd"><p>Todos os usuários e seus atributos</p>
+</dd>
+<dt class="field-even">Tipo de retorno</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.show_user">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">show_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.show_user" title="Link permanente para esta definição"></a></dt>
+<dd><p>Visualizar um usuário específico</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>int</em>) – Identificador do usuário na base de dados</p>
+</dd>
+<dt class="field-even">Retorna</dt>
+<dd class="field-even"><p>Um usuário e seus atributos</p>
+</dd>
+<dt class="field-odd">Tipo de retorno</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.show_user_role">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">show_user_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.show_user_role" title="Link permanente para esta definição"></a></dt>
+<dd><p>Visualizar todas as permissões de um usuário específico</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>int</em>) – Identificador do usuário na base de dados</p>
+</dd>
+<dt class="field-even">Retorna</dt>
+<dd class="field-even"><p>Descrição de todas as permissões do usuário</p>
+</dd>
+<dt class="field-odd">Tipo de retorno</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.libs.routes.update_user">
+<span class="sig-prename descclassname"><span class="pre">src.libs.routes.</span></span><span class="sig-name descname"><span class="pre">update_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.libs.routes.update_user" title="Link permanente para esta definição"></a></dt>
+<dd><p>Atualizar as informações de um usuário específico</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros</dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>int</em>) – Identificador do usuário na base de dados</p>
+</dd>
+<dt class="field-even">Retorna</dt>
+<dd class="field-even"><p>Um texto informando se a ação foi bem sucedida</p>
+</dd>
+<dt class="field-odd">Tipo de retorno</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="roles.html" class="btn btn-neutral float-left" title="Roles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="user.html" class="btn btn-neutral float-right" title="User" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Daniel Mendes Sechinske.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

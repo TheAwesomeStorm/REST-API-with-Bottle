@@ -1,0 +1,7 @@
+User
+==========
+
+.. automodule:: src.libs.user
+
+.. autoclass:: User
+    :members:
