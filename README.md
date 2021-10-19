@@ -1,4 +1,4 @@
-## REST API with Bottle
+## Training Developers | Python
 
 This project implements a permission system for a Web API using the Bottle library for Python
 
