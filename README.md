@@ -24,6 +24,6 @@ This project is part of a training to new Developers at GuiaInvest
 
 ## Project Documentation
 
-You can view the project documentation at [REST API with Bottle's Documentation](https://theawesomestorm.github.io/REST-API-with-Bottle/html/index.html)
+You can view the project documentation at [REST API with Bottle's Documentation](https://theawesomestorm.github.io/Training-Developers-Python/html/index.html)
 
 Be aware that the documentation was built with Brazilian Portuguese as default language
